@@ -1,0 +1,6 @@
+@import "@scss/global.scss";
+
+.index {
+    background: #fff;
+    @include full-layout;
+}

@@ -1,0 +1,66 @@
+@import "@scss/global.scss";
+
+.winHead {
+    width: 100%;
+    background-color: #000;
+    height: 36px;
+    line-height: 36px;
+    /* font-size: calc(10px + 2vmin); */
+    padding: 0 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-user-select: none;
+    .winHead_main, .winHead_handle {
+        height: 100%;
+    }
+    .winHead_main {
+        width: calc(100% - 70px);
+        color: #fff;
+        font-size: 16px;
+        text-align: right;
+        -webkit-app-region: drag;
+    }
+    .winHead_handle {
+        width: 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .winHead_handle-btn {
+            width: 12px;
+            height: 12px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            overflow: hidden;
+            text-align: center;
+            line-height: 12px;
+            display: table;
+            cursor: pointer;
+            &:hover {
+                .winHead_handle-btn_icon {
+                    opacity: 1;
+                }
+            }
+            &.winHead_handle--minus {
+                background: $main-yellow;
+                border: 1px solid $border-yellow;
+            }
+            &.winHead_handle--fullscreen {
+                background: $main-green;
+                border: 1px solid $border-green;
+            }
+            &.winHead_handle--close {
+                background: $main-red;
+                border: 1px solid $border-red;
+            }
+            .winHead_handle-btn_icon {
+                color: #000;
+                font-size: 8px;
+                display: table-cell;
+                vertical-align: middle;
+                opacity: 0;
+            }
+        }
+    }
+}
