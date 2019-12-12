@@ -308,6 +308,7 @@ module.exports = function(webpackEnv) {
         '@cpt':  path.resolve(__dirname, '../src/components'),
         '@page':  path.resolve(__dirname, '../src/pages'),
         '@scss':  path.resolve(__dirname, '../src/scss'),
+        '@script':  path.resolve(__dirname, '../src/script'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',

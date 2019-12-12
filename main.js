@@ -65,8 +65,8 @@ ipcMain.on('min', (e, arg) => {
 
 // 监听全屏
 ipcMain.on('fullscreen', (e, arg) => {
-  let thisSize = mainWindow.getSize();
-  let size = screen.getPrimaryDisplay().workAreaSize;
+  let thisSize = mainWindow.getSize(); // 当前窗口尺寸
+  let size = screen.getPrimaryDisplay().workAreaSize; // 窗口全屏尺寸
   if (thisSize[0] === size.width && thisSize[1] === size.height) {
       mainWindow.unmaximize();
   } 
