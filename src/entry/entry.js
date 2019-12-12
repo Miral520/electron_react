@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MainRoute from '@route/mainRoute';
 import './entry.scss';
-import Index from '@page/index/index';
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render((
+  <MainRoute />
+), document.getElementById('root'));

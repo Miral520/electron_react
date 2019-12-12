@@ -17,6 +17,11 @@ typings/
 .cache
 .next
 .vscode
+.vscode/
 dist
 build
 .cache/
+.DS_Store
+build/asset-manifest.json
+build/service-worker.js
+build/index.html

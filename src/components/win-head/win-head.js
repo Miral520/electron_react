@@ -32,7 +32,6 @@ class winHead extends React.Component {
       content: <Checkbox onChange={this.isOpenConfirm}>不再显示</Checkbox>,
       cancelText: '返回',
       okText: '退出',
-      okType: 'danger',
       centered: true,
       maskClosable: true,
       onOk() {

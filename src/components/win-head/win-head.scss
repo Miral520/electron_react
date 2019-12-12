@@ -12,20 +12,31 @@
     align-items: center;
     -webkit-user-select: none;
     @include border-bottom($border-line_light);
-    .winHead_main, .winHead_handle {
+
+    .winHead_main,
+    .winHead_handle {
         height: 100%;
     }
+
     .winHead_main {
         width: calc(100% - 70px);
         font-size: $head-main-size;
         text-align: right;
         -webkit-app-region: drag;
     }
+
     .winHead_handle {
         width: 56px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        &:hover {
+            .winHead_handle-btn {
+                .winHead_handle-btn_icon {
+                    opacity: 1;
+                }
+            }
+        }
         .winHead_handle-btn {
             width: 12px;
             height: 12px;
@@ -36,23 +47,22 @@
             line-height: 12px;
             display: table;
             cursor: pointer;
-            &:hover {
-                .winHead_handle-btn_icon {
-                    opacity: 1;
-                }
-            }
+
             &.winHead_handle--minus {
                 background: $head-handle_yellow;
                 border: 1px solid $head-handle-border_yellow;
             }
+
             &.winHead_handle--fullscreen {
                 background: $head-handle_green;
                 border: 1px solid $head-handle-border_green;
             }
+
             &.winHead_handle--close {
                 background: $head-handle_red;
                 border: 1px solid $head-handle-border_red;
             }
+
             .winHead_handle-btn_icon {
                 color: $head-handle_color;
                 font-size: $head-handle_size;
