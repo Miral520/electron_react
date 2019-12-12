@@ -103,3 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
+build/index.html
+build/service-worker.js
+build/asset-manifest.json
