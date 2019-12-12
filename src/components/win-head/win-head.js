@@ -1,22 +1,47 @@
 import React from 'react';
 import './win-head.scss';
-import { Icon } from 'antd';
+import { Icon, Modal, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
+
+const { confirm } = Modal;
 
 class winHead extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
+      showConfirm: true,
     };
     this.closeHandle = this.closeHandle.bind(this);
     this.fullscreenHandle = this.fullscreenHandle.bind(this);
     this.minimizeHandle = this.minimizeHandle.bind(this);
   }
 
+  // 记录下次是否弹出确认关闭弹窗
+  isOpenConfirm(e) {
+    console.log(e.target.checked);
+  }
+
   // 关闭程序
   closeHandle() {
-    global.app.quit();
+    confirm({
+      title: '你确定要退出吗？',
+      content: <Checkbox onChange={this.isOpenConfirm}>不再显示</Checkbox>,
+      cancelText: '返回',
+      okText: '退出',
+      okType: 'danger',
+      centered: true,
+      maskClosable: true,
+      onOk() {
+        // this.setState({
+        //   date: new Date()
+        // });
+        global.app.quit();
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
   }
 
   // 最小化

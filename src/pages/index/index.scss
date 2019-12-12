@@ -1,6 +1,6 @@
 @import "@scss/global.scss";
 
 .index {
-    background: #fff;
+    background: $main-bg_light;
     @include full-layout;
 }
