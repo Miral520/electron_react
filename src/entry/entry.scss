@@ -5,8 +5,7 @@
   padding: 0;
 }
 
-html,
-body {
+html, body {
   background: rgba(0, 0, 0, 0);
 }
 
@@ -18,5 +17,6 @@ body {
 .root {
   overflow: hidden;
   border-radius: 3px;
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
   @include full-layout;
 }

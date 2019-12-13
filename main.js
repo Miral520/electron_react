@@ -9,21 +9,23 @@ let mainWindow;
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 500,
+    height: 350,
+    minWidth: 500,
+    minHeight: 350,
+    center: true,
     transparent: true,
     frame: false,
-    // titleBarStyle: 'hidden',
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js'),
-      nodeIntegration: true
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
     }
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile('./build/index.html');
-
-  // mainWindow.loadURL('http://localhost:3000/');
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -73,4 +75,11 @@ ipcMain.on('fullscreen', (e, arg) => {
   else {
       mainWindow.maximize();
   }
+});
+
+// 进入App
+ipcMain.on('enter', (e, arg) => {
+  mainWindow.setResizable(true);
+  mainWindow.setSize(800, 600, true);
+  mainWindow.center();
 });

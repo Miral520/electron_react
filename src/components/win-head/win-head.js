@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 const { confirm } = Modal;
 const { mixin, vars } = publicFn;
 
-class winHead extends React.Component {
+class WinHead extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,24 +59,26 @@ class winHead extends React.Component {
   render() {
     return (
       <div className="winHead">
-        <div className="winHead_handle">
-          <div className="winHead_handle-btn winHead_handle--close" onClick={this.closeHandle}>
-            <Icon type="close" className="winHead_handle-btn_icon" />
+        <div className="winHead_main">
+          <div className="winHead_main-icon"></div>
+          <div className="winHead_main-layout">
+            { this.props.title }
           </div>
+        </div>
+        <div className="winHead_handle">
           <div className="winHead_handle-btn winHead_handle--minus" onClick={this.minimizeHandle}>
             <Icon type="minus" className="winHead_handle-btn_icon" />
           </div>
           <div className="winHead_handle-btn winHead_handle--fullscreen" onClick={this.fullscreenHandle}>
             <Icon type="fullscreen" className="winHead_handle-btn_icon" />
           </div>
-        </div>
-
-        <div className="winHead_main">
-          { this.props.title }
+          <div className="winHead_handle-btn winHead_handle--close" onClick={this.closeHandle}>
+            <Icon type="close" className="winHead_handle-btn_icon" />
+          </div>
         </div>
       </div>
     );
   }
 };
 
-export default winHead;
+export default WinHead;

@@ -1,17 +1,13 @@
 @import "@scss/global.scss";
 
 .winHead {
-    width: 100%;
     background-color: $head-bg_light;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 15px;
-    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     -webkit-user-select: none;
     @include border-bottom($border-line_light);
+    @include full-layout;
 
     .winHead_main,
     .winHead_handle {
@@ -19,14 +15,33 @@
     }
 
     .winHead_main {
-        width: calc(100% - 70px);
-        font-size: $head-main-size;
-        text-align: right;
+        width: calc(100% - calc(#{$head-handle-btn_size} * 3 + 20px));
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        overflow: hidden;
         -webkit-app-region: drag;
+        .winHead_main-icon, .winHead_main-layout {
+            height: 100%;
+        }
+        .winHead_main-icon {
+            width: $menu_width;
+            background: $head-icon-bg;
+        }
+        .winHead_main-layout {
+            font-size: $head-main-font-size;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
     }
 
     .winHead_handle {
-        width: 56px;
+        width: calc(#{$head-handle-btn_size} * 3 + 20px);
+        box-sizing: content-box;
+        padding: 0 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,29 +53,29 @@
             }
         }
         .winHead_handle-btn {
-            width: 12px;
-            height: 12px;
+            width: $head-handle-btn_size;
+            height: $head-handle-btn_size;
             box-sizing: border-box;
             border-radius: 50%;
             overflow: hidden;
             text-align: center;
-            line-height: 12px;
+            line-height: $head-handle-btn_size;
             display: table;
             cursor: pointer;
 
             &.winHead_handle--minus {
                 background: $head-handle_yellow;
-                border: 1px solid $head-handle-border_yellow;
+                @include border($head-handle-border_yellow);
             }
 
             &.winHead_handle--fullscreen {
                 background: $head-handle_green;
-                border: 1px solid $head-handle-border_green;
+                @include border($head-handle-border_green);
             }
 
             &.winHead_handle--close {
                 background: $head-handle_red;
-                border: 1px solid $head-handle-border_red;
+                @include border($head-handle-border_red);
             }
 
             .winHead_handle-btn_icon {
