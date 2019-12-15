@@ -4,9 +4,11 @@ import './entry.scss';
 import Main from '@frame/main/main';
 import Start from '@frame/start/start';
 
-class RenderApp extends React.Component {
+declare var global: any;
+
+class RenderApp extends React.Component<any, any> {
   // 继承
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       enter: false,
