@@ -3,8 +3,8 @@
 .main {
     overflow: hidden;
     background: $main-bg_light;
-    box-sizing: border-box;
-    @include border($border-line_light);
+    // box-sizing: border-box;
+    // @include border($border-line_light);
     @include full-layout;
     .main-head, .main-layout {
         width: 100%;
