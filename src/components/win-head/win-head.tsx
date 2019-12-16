@@ -2,13 +2,14 @@ import React from 'react';
 import publicFn from '@script/global';
 import './win-head.scss';
 import { Icon, Modal, Checkbox } from 'antd';
-import 'antd/dist/antd.css';
+
+declare var global: any;
 
 const { confirm } = Modal;
 const { mixin, vars } = publicFn;
 
-class WinHead extends React.Component {
-  constructor(props) {
+class WinHead extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       title: '',
@@ -20,9 +21,8 @@ class WinHead extends React.Component {
   }
 
   // 记录下次是否弹出确认关闭弹窗
-  isOpenConfirm(e) {
+  isOpenConfirm(e: object) {
     // console.log(e.target.checked);
-    console.log(mixin.canGetLocal('abc'));
   }
 
   // 关闭程序

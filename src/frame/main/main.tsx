@@ -5,7 +5,7 @@ import MainRoute from '@route/main'
 import WinHead from '@cpt/win-head/win-head';
 import WinMenu from '@cpt/win-menu/win-menu';
 
-class Main extends React.Component {
+class Main extends React.Component<any, any> {
   render() {
     return (
       <div className="main">

@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './map';
 
-const RouteWithSubRoutes = route => (
+const RouteWithSubRoutes = (route: any) => (
   <Route
     path={route.path}
     render={props => (
@@ -11,7 +11,7 @@ const RouteWithSubRoutes = route => (
   />
 );
 
-class MainRoute extends React.Component {
+class MainRoute extends React.Component<any, any> {
   render() {
     return (
       <Router>
