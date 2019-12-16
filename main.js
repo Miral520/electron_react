@@ -4,11 +4,13 @@ const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+let startWindow; // 欢迎页窗口
+let mainWindow; // 主程序窗口
 
+// 创建窗口
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  startWindow = new BrowserWindow({
     width: 500,
     height: 350,
     minWidth: 500,
@@ -16,8 +18,27 @@ function createWindow () {
     center: true,
     transparent: true,
     frame: false,
+    resizable: false,
+    hasShadow: true,
+    show: true,
+    webPreferences: {
+      preload: path.join(__dirname, './public/preload.js'),
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
+    }
+  });
+
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    minWidth: 500,
+    minHeight: 350,
+    center: true,
+    transparent: true,
+    frame: false,
     resizable: true,
     hasShadow: true,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js'),
       nodeIntegration: true,
@@ -26,18 +47,31 @@ function createWindow () {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./build/index.html');
+  startWindow.loadURL(`file://${__dirname}/build/index.html?start=0`);
+  mainWindow.loadURL(`file://${__dirname}/build/index.html?start=1`);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
+  startWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    startWindow = null
+  });
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
   });
+}
+
+// 进入程序主窗口
+function enterMainWindow () {
+  startWindow.destroy();
+  mainWindow.show();
 }
 
 // This method will be called when Electron has finished
@@ -80,6 +114,5 @@ ipcMain.on('fullscreen', (e, arg) => {
 
 // 进入App
 ipcMain.on('enter', (e, arg) => {
-  mainWindow.setSize(800, 600, true);
-  mainWindow.center();
+  enterMainWindow();
 });
