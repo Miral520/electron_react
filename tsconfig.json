@@ -32,8 +32,8 @@
       "@scss/*": [
         "src/scss/*"
       ],
-      "@script/*": [
-        "src/script/*"
+      "@utils/*": [
+        "src/utils/*"
       ],
       "@route/*": [
         "src/route/*"

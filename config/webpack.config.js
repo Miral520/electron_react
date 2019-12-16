@@ -172,15 +172,11 @@ module.exports = function(webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js',
+      filename: 'static/js/[name].[contenthash:8].js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
-      chunkFilename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].chunk.js'
-        : isEnvDevelopment && 'static/js/[name].chunk.js',
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
       // We inferred the "public path" (such as / or /my-project) from homepage.
       // We use "/" in development.
       publicPath: publicPath,
@@ -299,7 +295,7 @@ module.exports = function(webpackEnv) {
         '@cpt': path.resolve(__dirname, '../src/components'),
         '@pages': path.resolve(__dirname, '../src/pages'),
         '@scss': path.resolve(__dirname, '../src/scss'),
-        '@script': path.resolve(__dirname, '../src/script'),
+        '@utils': path.resolve(__dirname, '../src/utils'),
         '@route': path.resolve(__dirname, '../src/route'),
         '@frame': path.resolve(__dirname, '../src/frame'),
         // Allows for better profiling with ReactDevTools
@@ -479,7 +475,7 @@ module.exports = function(webpackEnv) {
                 loader: 'sass-resources-loader',
                 options: {
                   // 这里是需要引入全局的资源文件，它可以是一个字符串或者是一个数组， 通常用数组去代替。
-                  resources: ['./src/scss/global.scss']
+                  resources: ['./src/scss/common.scss']
                 }
               }),
               // Don't consider CSS imports dead code even if the

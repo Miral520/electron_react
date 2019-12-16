@@ -1,6 +1,6 @@
 import React from 'react';
 import './win-menu.scss';
-// import publicFn from '@script/global';
+// import publicFn from '@utils/utils';
 // import { Icon, Modal, Checkbox } from 'antd';
 
 // const { mixin, vars } = publicFn;

@@ -1,12 +1,12 @@
 import React from 'react';
-import publicFn from '@script/global';
+// import publicFn from '@utils/utils';
 import './win-head.scss';
 import { Icon, Modal, Checkbox } from 'antd';
 
 declare var global: any;
 
 const { confirm } = Modal;
-const { mixin, vars } = publicFn;
+// const { mixin, vars } = publicFn;
 
 class WinHead extends React.Component<any, any> {
   constructor(props: any) {

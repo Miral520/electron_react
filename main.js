@@ -16,7 +16,8 @@ function createWindow () {
     center: true,
     transparent: true,
     frame: false,
-    resizable: false,
+    resizable: true,
+    hasShadow: true,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js'),
       nodeIntegration: true,
@@ -79,7 +80,6 @@ ipcMain.on('fullscreen', (e, arg) => {
 
 // 进入App
 ipcMain.on('enter', (e, arg) => {
-  mainWindow.setResizable(true);
   mainWindow.setSize(800, 600, true);
   mainWindow.center();
 });

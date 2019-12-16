@@ -1,4 +1,5 @@
 .start {
     background: #000;
+    -webkit-app-region: no-drag;
     @include full-layout;
 }

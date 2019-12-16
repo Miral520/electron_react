@@ -1,4 +1,6 @@
-import Index from '@pages/index/index';
+import loadable from '@utils/loadable'
+const Index = loadable(()=>import('@pages/index/index'))
+// import Index from '@pages/index/index';
 
 const routes = [
     {
