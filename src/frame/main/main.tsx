@@ -5,10 +5,34 @@ import MainRoute from '@route/main'
 import WinHead from '@cpt/win-head/win-head';
 import WinMenu from '@cpt/win-menu/win-menu';
 
+declare var global: any;
+
 class Main extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      os: '',
+      layoutClass: ''
+    };
+    this.getOsType = this.getOsType.bind(this);
+  }
+
+  getOsType() {
+    global.ipcRenderer.on('sys', (event: any, message: any) => {
+      this.setState({
+        os: message,
+        layoutClass: message === 'Windows_NT' ? 'main_border' : ''
+      });
+    });
+  }
+
+  componentWillMount() {
+    this.getOsType();
+  }
+
   render() {
     return (
-      <div className="main">
+      <div className={`main ${this.state.layoutClass}`}>
         <div className="main-head">
           <WinHead title="htx" />
         </div>
