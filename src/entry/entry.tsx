@@ -12,7 +12,7 @@ class RenderApp extends React.Component<any, any> {
   render() {
     let str = mixin.getUrlSearch('start');
     let index = str ? parseInt(str) : 0;
-    return index ? <Main /> : <Start timer="10" />;
+    return index ? <Main /> : <Start timer={vars.startTime} />;
   }
 };
 

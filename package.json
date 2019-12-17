@@ -81,11 +81,10 @@
     "sass-resources-loader": "^2.0.1"
   },
   "scripts": {
-    "electron": "electron .",
+    "el": "electron .",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "app": "npm run build && npm run electron"
+    "app": "npm run build && npm run el"
   },
   "eslintConfig": {
     "extends": "react-app",
