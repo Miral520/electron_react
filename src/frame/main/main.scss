@@ -1,11 +1,11 @@
-@import "@scss/global.scss";
-
 .main {
     overflow: hidden;
     background: $main-bg_light;
-    // box-sizing: border-box;
-    // @include border($border-line_light);
     @include full-layout;
+    &.main_border {
+        box-sizing: border-box;
+        @include border($border-line_light);
+    }
     .main-head, .main-layout {
         width: 100%;
     }

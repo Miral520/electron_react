@@ -1,4 +1,4 @@
 import mixin from './mixin'
-import vars from './vars'
+import vars from './variables'
 
 export default {mixin, vars}

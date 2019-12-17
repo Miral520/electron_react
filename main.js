@@ -1,14 +1,17 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain, screen} = require('electron');
 const path = require('path');
+const os = require('os');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+let startWindow; // 欢迎页窗口
+let mainWindow; // 主程序窗口
 
+// 创建窗口
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  startWindow = new BrowserWindow({
     width: 500,
     height: 350,
     minWidth: 500,
@@ -17,6 +20,26 @@ function createWindow () {
     transparent: true,
     frame: false,
     resizable: false,
+    hasShadow: true,
+    show: true,
+    webPreferences: {
+      preload: path.join(__dirname, './public/preload.js'),
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
+    }
+  });
+
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    minWidth: 500,
+    minHeight: 350,
+    center: true,
+    transparent: true,
+    frame: false,
+    resizable: true,
+    hasShadow: true,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js'),
       nodeIntegration: true,
@@ -25,12 +48,19 @@ function createWindow () {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./build/index.html');
+  startWindow.loadURL(`file://${__dirname}/build/index.html?start=0`);
+  mainWindow.loadURL(`file://${__dirname}/build/index.html?start=1`);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
+  startWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    startWindow = null
+  });
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
@@ -39,19 +69,33 @@ function createWindow () {
   });
 }
 
+// 进入程序主窗口
+function enterMainWindow () {
+  startWindow.destroy();
+  mainWindow.show();
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  // 创建窗口
+  createWindow();
+
+  // 传递操作系统信息
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send('sys', os.type())
+  });
+});
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') app.quit();
 });
 
-app.on('activate', function () {
+app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
@@ -79,7 +123,5 @@ ipcMain.on('fullscreen', (e, arg) => {
 
 // 进入App
 ipcMain.on('enter', (e, arg) => {
-  mainWindow.setResizable(true);
-  mainWindow.setSize(800, 600, true);
-  mainWindow.center();
+  enterMainWindow();
 });

@@ -1,13 +1,12 @@
 import React from 'react';
 import './win-menu.scss';
-// import publicFn from '@script/global';
+// import publicFn from '@utils/utils';
 // import { Icon, Modal, Checkbox } from 'antd';
-// import 'antd/dist/antd.css';
 
 // const { mixin, vars } = publicFn;
 
-class WinMenu extends React.Component {
-  constructor(props) {
+class WinMenu extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       // title: '',
