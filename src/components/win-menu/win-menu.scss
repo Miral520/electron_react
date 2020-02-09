@@ -1,5 +1,23 @@
 .winMenu {
     background-color: $head-bg_light;
     @include full-layout;
-    @include border-right($border-line_light);
+
+    .winMenuList {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: #bbb;
+        text-align: center;
+        font-size: 18px;
+        @include border-bottom($border-line_light);
+
+        &:last-child {
+            border: none;
+        }
+
+        &.active {
+            background: $main-color;
+            color: #fff;
+        }
+    }
 }

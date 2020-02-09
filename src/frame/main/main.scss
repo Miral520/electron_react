@@ -2,36 +2,50 @@
     overflow: hidden;
     background: $main-bg_light;
     @include full-layout;
+
     &.main_border {
         box-sizing: border-box;
         @include border($border-line_light);
     }
-    .main-head, .main-layout {
+
+    .main-head,
+    .main-layout {
         width: 100%;
     }
+
     .main-head {
         height: $head_height;
     }
+
     .main-layout {
         height: calc(100% - #{$head_height});
-        .main-layout_scroll, .main-layout_menu {
+
+        .main-layout_scroll,
+        .main-layout_menu {
             height: 100%;
         }
+
         .main-layout_scroll {
             width: calc(100% - #{$menu_width});
             float: right;
+            @include border-left($border-line_light);
+            @include border-top($border-line_light);
+
             .scrollbar-container.vertical {
                 opacity: 0;
+
                 &:hover {
                     background: transparent;
                     opacity: 1 !important;
                 }
             }
         }
+
         .main-layout_menu {
             width: $menu_width;
             float: left;
         }
+
         @include clearfix;
     }
 }

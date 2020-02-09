@@ -1,6 +1,27 @@
 .start {
-    background: #000;
-    color: #fff;
-    -webkit-app-region: no-drag;
+    // position: relative;
+    text-align: center;
+    background: transparent;
+    -webkit-app-region: drag;
     @include full-layout;
+
+    .start-bg,
+    .start-progress {
+        display: inline-block;
+    }
+
+    .start-bg {
+        width: 100%;
+        height: auto;
+    }
+
+    .start-progress {
+        width: 90%;
+        height: 19px;
+        margin-top: 15px;
+
+        .ant-progress-text {
+            color: #87d068;
+        }
+    }
 }

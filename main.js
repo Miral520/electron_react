@@ -12,16 +12,18 @@ let mainWindow; // 主程序窗口
 function createWindow () {
   // Create the browser window.
   startWindow = new BrowserWindow({
-    width: 500,
-    height: 350,
-    minWidth: 500,
-    minHeight: 350,
+    width: 310,
+    height: 345,
+    minWidth: 310,
+    minHeight: 345,
     center: true,
     transparent: true,
     frame: false,
     resizable: false,
     hasShadow: true,
     show: true,
+    alwaysOnTop: true,
+    // movable: true,
     webPreferences: {
       preload: path.join(__dirname, './public/preload.js'),
       nodeIntegration: true,
@@ -52,6 +54,7 @@ function createWindow () {
   mainWindow.loadURL(`file://${__dirname}/build/index.html?start=1`);
 
   // Open the DevTools.
+  // startWindow.webContents.openDevTools();
   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
