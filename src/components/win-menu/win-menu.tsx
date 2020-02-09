@@ -1,7 +1,8 @@
 import React from 'react';
+import { Icon } from 'antd';
 import './win-menu.scss';
 // import publicFn from '@utils/utils';
-// import { Icon, Modal, Checkbox } from 'antd';
+
 
 // const { mixin, vars } = publicFn;
 
@@ -16,9 +17,17 @@ class WinMenu extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="winMenu">
-        
-      </div>
+      <ul className="winMenu">
+        <li className="winMenuList active">
+          <Icon type="home" />
+        </li>
+        <li className="winMenuList">
+          <Icon type="home" />
+        </li>
+        <li className="winMenuList">
+          <Icon type="home" />
+        </li>
+      </ul>
     );
   }
 };

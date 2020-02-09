@@ -1,3 +1,3 @@
 export default {
-    startTime: 0, // 欢迎页等待时间
+    startTime: 5, // 欢迎页等待时间
 }

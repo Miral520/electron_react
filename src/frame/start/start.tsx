@@ -1,14 +1,22 @@
 import React from 'react';
 import './start.scss';
+import { Progress } from 'antd';
+import mainPic from '@img/start_main.png'
 
 declare var global: any;
+
+const strokeColor = {
+  from: '#108ee9',
+  to: '#87d068',
+};
 
 class Start extends React.Component<any, any> {
   // 继承
   constructor(props: any) {
     super(props);
     this.state = {
-      showSec: parseInt(this.props.timer),
+      add: Math.round(100 / parseInt(this.props.timer) / 20),
+      percent: 0
     };
     this.setTimer = this.setTimer.bind(this);
   }
@@ -21,22 +29,25 @@ class Start extends React.Component<any, any> {
   // 设置定时器
   setTimer() {
     let timer = setInterval(() => {
-      if (this.state.showSec) {
-        this.setState((state: any, props: any) => ({
-          showSec: state.showSec - 1
-        }));
-      }
-      else {
+      this.setState((state: any, props: any) => ({
+        percent: state.percent + state.add
+      }));
+      if (this.state.percent >= 100) {
         clearInterval(timer);
         global.ipcRenderer.send('enter');
       }
-    }, 1000);
+    }, 50);
   }
 
   // 渲染
   render() {
     return (
-      <div className="start">{this.state.showSec}</div>
+      <div className="start">
+        <img className="start-bg" src={mainPic} />
+        <div className="start-progress">
+          <Progress percent={this.state.percent} strokeWidth={14} strokeColor={strokeColor} status="active" />
+        </div>
+      </div>
     );
   }
 };

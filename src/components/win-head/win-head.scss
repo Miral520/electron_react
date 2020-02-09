@@ -4,7 +4,6 @@
     justify-content: space-between;
     align-items: center;
     -webkit-user-select: none;
-    @include border-bottom($border-line_light);
     @include full-layout;
 
     .winHead_main,
