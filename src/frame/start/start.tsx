@@ -45,7 +45,7 @@ class Start extends React.Component<any, any> {
       <div className="start">
         <img className="start-bg" src={mainPic} />
         <div className="start-progress">
-          <Progress percent={this.state.percent} strokeWidth={14} strokeColor={strokeColor} status="active" />
+          <Progress percent={this.state.percent} strokeWidth={12} strokeColor={strokeColor} status="active" />
         </div>
       </div>
     );

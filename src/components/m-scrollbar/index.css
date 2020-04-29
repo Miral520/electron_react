@@ -1,0 +1,89 @@
+.m-scrollbar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.m-scrollbar_full {
+    overflow: scroll;
+    width: -webkit-calc(100% + 17px);
+    width: -moz-calc(100% + 17px);
+    width: -ms-calc(100% + 17px);
+    width: -o-calc(100% + 17px);
+    width: calc(100% + 17px);
+    height: -webkit-calc(100% + 17px);
+    height: -moz-calc(100% + 17px);
+    height: -ms-calc(100% + 17px);
+    height: -o-calc(100% + 17px);
+    height: calc(100% + 17px);
+}
+
+.m-scrollbar_content {
+    display: block;
+}
+
+.m-scrollbar:hover .m-scrollbar_x, .m-scrollbar:hover .m-scrollbar_y, .m-scrollbar_x.active, .m-scrollbar_y.active {
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.m-scrollbar_x, .m-scrollbar_y {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    opacity: 0;
+    display: none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.m-scrollbar_x.show, .m-scrollbar_y.show {
+    display: block;
+}
+
+.m-scrollbar_x {
+    left: 0;
+    bottom: 8px;
+    width: 100%;
+    height: 8px;
+    padding: 0 8px;
+}
+
+.m-scrollbar_y {
+    top: 0;
+    right: 8px;
+    width: 8px;
+    height: 100%;
+    padding: 8px 0;
+}
+
+.m-scrollbar_show {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    transition: all 0.025s linear;
+    -webkit-transition: all 0.025s linear;
+    -moz-transition: all 0.025s linear;
+    -ms-transition: all 0.025s linear;
+    -o-transition: all 0.025s linear;
+}
+
+.m-scrollbar_x .m-scrollbar_show {
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+}
+
+.m-scrollbar_y .m-scrollbar_show {
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+}
