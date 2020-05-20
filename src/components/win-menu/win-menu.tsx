@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import './win-menu.scss';
 // import publicFn from '@utils/utils';
 
@@ -19,17 +19,17 @@ class WinMenu extends React.Component<any, any> {
     return (
       <ul className="winMenu">
         <li className="winMenuList active">
-          <Icon type="home" />
+          <HomeOutlined />
         </li>
         <li className="winMenuList">
-          <Icon type="home" />
+          <HomeOutlined />
         </li>
         <li className="winMenuList">
-          <Icon type="home" />
+          <HomeOutlined />
         </li>
       </ul>
     );
   }
-};
+}
 
 export default WinMenu;
