@@ -1,6 +1,7 @@
 import React from 'react';
 import './win-head.scss';
-import { Icon, Modal, Checkbox } from 'antd';
+import { CloseOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { Modal, Checkbox } from 'antd';
 
 declare var global: any;
 
@@ -65,18 +66,18 @@ class WinHead extends React.Component<any, any> {
         </div>
         <div className="winHead_handle">
           <div className="winHead_handle-btn winHead_handle--minus" onClick={this.minimizeHandle}>
-            <Icon type="minus" className="winHead_handle-btn_icon" />
+            <MinusOutlined className="winHead_handle-btn_icon" />
           </div>
           <div className="winHead_handle-btn winHead_handle--fullscreen" onClick={this.fullscreenHandle}>
-            <Icon type="fullscreen" className="winHead_handle-btn_icon" />
+            <PlusOutlined className="winHead_handle-btn_icon" />
           </div>
           <div className="winHead_handle-btn winHead_handle--close" onClick={this.closeHandle}>
-            <Icon type="close" className="winHead_handle-btn_icon" />
+            <CloseOutlined className="winHead_handle-btn_icon" />
           </div>
         </div>
       </div>
     );
   }
-};
+}
 
 export default WinHead;
